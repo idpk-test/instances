@@ -1,0 +1,12 @@
+apiVersion: database.idplatformkit.io/v1alpha1
+kind: PostgresDatabase
+metadata:
+  name: orders
+  namespace: demo
+  labels:
+    # Lets the portal find this database among same-named ones in other
+    # tenants. The composition sets the same label on what it composes.
+    idplatformkit.io/tenant: demo
+spec:
+  writeConnectionSecretToRef:
+    name: orders-conn
