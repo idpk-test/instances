@@ -3,7 +3,7 @@ kind: Resource
 metadata:
   name: tenant-demo
   title: demo
-  description: Tenant namespace provisioned by Crossplane from tenants/demo.yaml
+  description: Tenant namespaces (demo-staging, demo-prod) provisioned by Crossplane from tenants/demo.yaml
   annotations:
     # Every object Crossplane composes for this Tenant, and the Tenant
     # itself, carries this label.

@@ -1,17 +1,17 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: postgres-demo-orders
-  title: orders (demo)
-  description: Postgres database demo_orders on the shared server, provisioned by Crossplane
+  name: postgres-demo-staging-orders
+  title: orders (demo-staging)
+  description: Postgres database demo-staging_orders on the shared server, provisioned by Crossplane
   annotations:
     # crossplane.io/composite=<name> is only unique within a namespace, so
     # the tenant label narrows it down. Not backstage.io/kubernetes-namespace:
     # a namespaced lookup also queries cluster-scoped kinds such as Tenant
     # and reports NOT_FOUND errors in the Kubernetes tab.
-    backstage.io/kubernetes-label-selector: crossplane.io/composite=orders,idplatformkit.io/tenant=demo
+    backstage.io/kubernetes-label-selector: crossplane.io/composite=orders,idplatformkit.io/tenant=demo-staging
   links:
-    - url: https://github.com/idpk-test/instances/blob/main/databases/demo/orders.yaml
+    - url: https://github.com/idpk-test/instances/blob/main/databases/demo-staging/orders.yaml
       title: PostgresDatabase claim
 spec:
   type: database
