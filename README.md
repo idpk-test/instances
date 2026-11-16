@@ -19,7 +19,7 @@ It starts empty. Claims normally arrive through the portal's **New Tenant** and 
 
 ```
 tenants/<tenant>.yaml                   # cluster-scoped: one per team
-databases/<namespace>/<name>.yaml       # namespaced: lives in the tenant's namespace
+databases/<namespace>/<name>.yaml       # namespaced: lives in one of the tenant's namespaces, <tenant>-<environment>
 catalog/                                # one Backstage entity per tenant and database, read by the portal
 ```
 
@@ -32,7 +32,7 @@ Argo CD syncs `tenants/` and `databases/`. It ignores `catalog/` and `.github/`.
 
 ## Deleting is real
 
-Argo CD syncs this repository with `prune` enabled. **Removing a file deletes the resource**: removing a `Tenant` deletes its namespace and everything in it, including its OpenBao namespace and secrets. Removing a `PostgresDatabase` drops the database.
+Argo CD syncs this repository with `prune` enabled. **Removing a file deletes the resource**: removing a `Tenant` deletes its namespaces and everything in them, including its OpenBao namespace and secrets. Removing a `PostgresDatabase` drops the database.
 
 ## Docs
 
