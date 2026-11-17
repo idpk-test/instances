@@ -4,6 +4,7 @@ metadata:
   name: demo
 spec:
   ownerGroup: team-a
+  environments: [staging, prod]
   vault:
     enabled: true
     serviceAccountName: demo-app
