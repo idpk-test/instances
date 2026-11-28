@@ -1,0 +1,19 @@
+apiVersion: platform.idplatformkit.io/v1alpha1
+kind: App
+metadata:
+  name: app
+  namespace: demo-staging
+spec:
+  services:
+    db:
+      type: postgres
+  components:
+    api:
+      image: app
+      port: 8080
+      env:
+        DATABASE_URL: ${services.db.url}
+      expose:
+        path: /
+  images:
+    app: ghcr.io/idpk-test/hello-go@sha256:5222cc92b77a9e7e4224adaef21f120012e8e47d8f74ccc9c63a8354e6cd3348
