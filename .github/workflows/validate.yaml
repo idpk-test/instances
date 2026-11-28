@@ -30,8 +30,9 @@ jobs:
 
       - name: Validate claims against the XRDs
         run: |
-          if ! find tenants databases -name '*.yaml' | grep -q .; then
+          dirs=$(for d in tenants databases apps; do [ -d "$d" ] && echo "$d/"; done | paste -sd, -)
+          if [ -z "$dirs" ] || ! find ${dirs//,/ } -name '*.yaml' | grep -q .; then
             echo "No claims yet: nothing to validate."
             exit 0
           fi
-          crossplane resource validate --error-on-missing-schemas .orchestrator/compositions/ tenants/,databases/
+          crossplane resource validate --error-on-missing-schemas .orchestrator/compositions/ "$dirs"
